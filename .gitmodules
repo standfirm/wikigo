@@ -1,0 +1,3 @@
+[submodule "public/themes/misoca"]
+	path = public/themes/misoca
+	url = git@github.com:standfirm/wiki-theme-for-misoca.git
