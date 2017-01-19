@@ -21,20 +21,29 @@ html lang="en"
     = raw Option.html_append_head
   body
     header
-      nav.navbar.navbar-inverse
+      nav.navbar
         .container
-          = link_to site_title, root_path, { class: 'navbar-brand' }
+          .navbar-header
+            button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#top-nav" expanded="false"
+              span.sr-only hello
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
 
-          .hidden-xs
-            = search_form_for @search, url: words_index_path, method: :get, html: { class: 'navbar-form navbar-left' } do |f|
-              .form-group
-                = f.text_field :title_or_body_cont, class: 'form-control', placeholder: t('search')
+            = link_to root_path, { class: 'navbar-brand' }
+              = image_tag 'logo.png', width: '20px'
+              = site_title
 
-          .navbar-text.navbar-right
-            - if user_signed_in?
-              = link_to 'New Keyword', new_word_path, { class: 'navbar-link' }
-            - else
-              = link_to 'Sign in', new_user_session_path, { class: 'navbar-link' }
+          .collapse.navbar-collapse#top-nav
+            .nav.navbar-nav
+              = search_form_for @search, url: words_index_path, method: :get, html: { class: 'navbar-form navbar-left' } do |f|
+                .form-group
+                  = f.text_field :title_or_body_cont, class: 'form-control', placeholder: t('search')
+
+            ul.nav.navbar-nav.navbar-right
+              li = link_to 'Misocaとは', '/Misoca', { class: 'navbar-link' }
+              - if user_signed_in?
+                li = link_to '記事を書く', new_word_path, { class: 'navbar-link' }
     main
       .container
         - if notice
@@ -48,14 +57,41 @@ html lang="en"
 
     footer.page-footer
       .container
-        h5 Menu
-        ul
-          li = link_to 'All words', words_index_path, { class: 'grey-text text-lighten-3'}
-          - if user_signed_in?
-            li = link_to 'Settings', site_activities_path, { class: 'grey-text text-lighten-3'}
-            li = link_to 'Sign out', destroy_user_session_path, { method: :delete, class: 'grey-text text-lighten-3'}
+        .row
+          .col-md-4.col-xs12
+            h5 メニュー
+            ul
+              li = link_to 'すべての記事', words_index_path, { class: 'grey-text text-lighten-3'}
+              - if user_signed_in?
+                li = link_to '設定', site_activities_path, { class: 'grey-text text-lighten-3'}
+                li = link_to 'ログアウト', destroy_user_session_path, { method: :delete, class: 'grey-text text-lighten-3'}
+          .col-md-4.col-xs12
+            h5 関連メディア
+            ul
+              li
+                a href="https://www.misoca.jp/press/"  Misocaプレスルーム
+              li
+                a href="https://www.misoca.jp/blog/"  Misocaブログ
+              li
+                a href="http://tech.misoca.jp/"  Misoca開発ブログ
+              li
+                a href="https://www.misoca.jp/toyoshi/"  toyoshiの日記
+              li
+                a href="https://www.misoca.jp/study/"  経理の教科書
+              li
+                a href="https://www.misoca.jp/mlist/"  ミツモリスト
+              li
+                a href="https://www.misoca.jp/freelance/"  フリーランスブック
+          .col-md-4.col-xs12
+            h5 このサイトについて
+            ul
+              li
+                a href="/大Misoca百科:利用規約"  利用規約
+              li
+                a href="https://www.misoca.jp/contact/"  運営組織
+              li
+                a href="https://recruit.misoca.jp/"  採用情報
       .footer-copyright
         .container
-        = link_to '', '', { class: 'grey-text text-lighten-3'}
+          p Copyright &copy; 2016. Misoca Inc. All rights reserved.
 
-    = raw Option.html_append_body

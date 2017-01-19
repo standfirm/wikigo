@@ -24,6 +24,30 @@ main {
   border-top: 1px solid #e5e5e5;
 }
 
+nav.navbar {
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-brand > img {
+  display: inline;
+  margin-right: 7px;
+  vertical-align: bottom;
+}
+
+.navbar-brand {
+  line-height: 20px;
+  color: #333;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: black;
+}
+
+.footer-copyright {
+  text-align: center;
+  font-size: 80%;
+}
+
 .setting-nav {
   margin-top: 48px;
 }
