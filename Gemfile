@@ -13,8 +13,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'gon'
 gem 'rubyzip'
 
-gem 'qiita-markdown'
 gem 'devise'
+gem 'omniauth-misoca'
+
+gem 'qiita-markdown'
 gem 'slim-rails'
 gem 'honoka-rails', '>= 3.3.6.3'
 gem 'simplemde-rails'
