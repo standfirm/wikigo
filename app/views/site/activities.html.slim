@@ -1,5 +1,5 @@
 .page-header
-  h1 Activities
+  h1 アクティビティ
 
 ul.activities 
   - @activities.each do |activity|
@@ -12,3 +12,5 @@ ul.activities
         = "#{activity.owner.username} "
       | edited page 
       = link_to activity.trackable.title, activity.trackable
+  - if @activities.empty?
+    p アクティビティはありません。ここには記事の編集などの履歴が表示されます。
