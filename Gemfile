@@ -35,6 +35,8 @@ gem 'acts_as_favable', github: 'toyoshi/acts_as_favable'
 gem 'faraday'
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master' # For 5.x
 
+gem 'merit'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
