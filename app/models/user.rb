@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_merit
+
   after_save :keep_admin_exist
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
