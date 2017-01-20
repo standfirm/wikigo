@@ -17,11 +17,6 @@ class SiteController < ApplicationController
     redirect_to site_members_path, notice: 'Role updated'
   end
 
-  def regenerate_token
-    Option.update_registration_token
-    redirect_to site_members_path, notice: 'Token regenerated'
-  end
-
   def activities
     @activities = PublicActivity::Activity.where(recipient: current_user).order('created_at desc').limit(100)
   end

@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
     put 'site/update_settings'
     put 'site/update_user_role', as: 'update_user_role'
-    put 'site/regenerate_token', as: 'regenerate_registration'
 
     resources :webhooks, except: [:show]
 

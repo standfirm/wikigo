@@ -7,9 +7,6 @@ end
 #Site Title
 Option.site_title = 'Wiki Go' if Option.site_title.blank?
 
-#Default User Registration Token
-Option.update_registration_token if Option.user_registration_token.blank?
-
 #Recent words length
 Option.list_size_of_recent_words_parts = 5 if Option.list_size_of_recent_words_parts.blank?
 
