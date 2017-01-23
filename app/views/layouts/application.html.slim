@@ -42,8 +42,6 @@ html lang="en"
 
             ul.nav.navbar-nav.navbar-right
               li = link_to 'Misocaとは', '/Misoca', { class: 'navbar-link' }
-              - unless user_signed_in?
-                li = link_to 'ログイン/新規登録', user_misoca_omniauth_authorize_path, { class: 'navbar-link' }
               - if user_signed_in?
                 li = link_to '記事を書く', new_word_path, { class: 'navbar-link' }
     main
@@ -64,8 +62,6 @@ html lang="en"
             h5 メニュー
             ul
               li = link_to 'すべての記事', words_index_path, { class: 'grey-text text-lighten-3'}
-              - unless user_signed_in?
-                li = link_to 'ログイン', user_misoca_omniauth_authorize_path
               - if user_signed_in?
                 li = link_to '設定', site_activities_path, { class: 'grey-text text-lighten-3'}
                 li = link_to 'ログアウト', destroy_user_session_path, { method: :delete, class: 'grey-text text-lighten-3'}
