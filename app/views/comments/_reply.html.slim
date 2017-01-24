@@ -1,0 +1,10 @@
+- comments.each do |comment|
+  .panel.panel-default
+    .panel-heading.small
+      strong
+        = comment.user.username
+      .pull-right.small
+        = comment.created_at
+    .panel-body
+      p
+        = comment.body

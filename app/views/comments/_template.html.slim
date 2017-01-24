@@ -1,0 +1,13 @@
+.comments-header
+  h3
+    span.glyphicon.glyphicon-comment.fa-fw aria-hidden="true"
+    | 
+      コメント
+      (#{commentable.comment_threads.count})
+
+.comments-container
+  = render partial: "comments/reply", locals: {comments: commentable.root_comments}
+
+- if user_signed_in?
+  = render partial: "comments/form", locals: {new_comment: new_comment}
+

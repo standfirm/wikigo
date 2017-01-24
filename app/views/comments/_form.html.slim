@@ -1,0 +1,9 @@
+strong コメントを送信する
+= form_for [@word, @new_comment] do |f|
+  = f.hidden_field :commentable_id, value: @new_comment.commentable_id
+  = f.hidden_field :commentable_type, value: @new_comment.commentable_type
+  .field.form-group
+    = f.text_area :body, class: 'form-control'
+  .field.form-group
+    = submit_tag "送信", class: 'btn btn-default'
+

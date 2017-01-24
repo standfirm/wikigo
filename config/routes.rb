@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get '/tag::tag_list', to: 'words#tag', as: 'word_tag'
 
   resources :words, path: '/' do
+    resources :comments, only: [:create]
     get '/versions', to: redirect('/%{word_id}/versions/0')
     resources :versions, only: [:show] do
       member do

@@ -1,6 +1,7 @@
 class Word < ApplicationRecord
   acts_as_taggable
   acts_as_favable
+  acts_as_commentable
 
   include PublicActivity::Model
   include TagFinder

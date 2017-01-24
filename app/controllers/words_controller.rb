@@ -12,6 +12,7 @@ class WordsController < ApplicationController
   # GET /words/1
   # GET /words/1.json
   def show
+    @new_comment = Comment.build_from(@word, current_user&.id, "")
   end
 
   def tags
