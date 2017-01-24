@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120102217) do
+ActiveRecord::Schema.define(version: 20170124085026) do
+
   create_table "activities", force: :cascade do |t|
     t.string   "trackable_type"
     t.integer  "trackable_id"
@@ -42,6 +43,22 @@ ActiveRecord::Schema.define(version: 20170120102217) do
     t.index ["badge_id", "sash_id"], name: "index_badges_sashes_on_badge_id_and_sash_id"
     t.index ["badge_id"], name: "index_badges_sashes_on_badge_id"
     t.index ["sash_id"], name: "index_badges_sashes_on_sash_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.string   "title"
+    t.text     "body"
+    t.string   "subject"
+    t.integer  "user_id",          null: false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
