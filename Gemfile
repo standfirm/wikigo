@@ -38,6 +38,7 @@ gem 'faraday'
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master' # For 5.x
 
 gem 'merit'
+gem 'acts_as_commentable_with_threading'
 
 group :development, :test do
   gem 'byebug', platform: :mri
