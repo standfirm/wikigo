@@ -10,17 +10,22 @@ class WordsControllerTest < ActionDispatch::IntegrationTest
     @word = words(:one)
   end
 
-  test "should get index" do
+  test "個別記事が表示できる" do
+    get word_url(@word)
+    assert_response :success
+  end
+
+  test "単語一覧ページへのアクセスができる" do
     get words_index_url
     assert_response :success
   end
 
-  test "should get new" do
+  test "記事作成ページにアクセスできる" do
     get new_word_url
     assert_response :success
   end
 
-  test "should create word" do
+  test "記事が作成できる" do
     assert_difference('Word.count') do
       post words_url, params: { word: { body: @word.body, title: @word.title + "_different_title" } }
     end
@@ -28,32 +33,19 @@ class WordsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to word_url(Word.last)
   end
 
-  test "User should added to the fav" do
+  test "記事を作成するとfavoriteが付いている" do
     post words_url, params: { word: { body: '', title: 'fav-test' } }
     @word = Word.find_by_title('fav-test')
     assert_equal 1, @word.favorites.count
   end
 
-  test "should show word" do
-    get word_url(@word)
-    assert_response :success
-  end
-
-  test "should get edit" do
+  test "記事の編集ページが表示できる" do
     get edit_word_url(@word)
     assert_response :success
   end
 
-  test "should update word" do
+  test "記事の編集ができる" do
     patch word_url(@word), params: { word: { body: @word.body, title: @word.title } }
     assert_redirected_to word_url(@word)
-  end
-
-  test "should destroy word" do
-    assert_difference('Word.count', -1) do
-      delete word_url(@word)
-    end
-
-    assert_redirected_to words_url
   end
 end
