@@ -8,8 +8,18 @@ module WordsHelper
     body = word.body
     except_word = word.title
 
+    dic = []
+
+    #長いキーワードから別の文字列に置き換えて、それより短い文字列で置き換えられることを防ぐ
+    #TRIEなどのアルゴリズムで高速化するのが望ましい
     word_list(except_word).each do |w|
-      body = body.gsub(w, link_to(w, url_for(controller: :words, action: :show, id: w)))
+      hashed_w = Digest::SHA1.hexdigest(w)
+      dic << [hashed_w, w]
+      body = body.gsub(w, hashed_w) 
+    end
+
+    dic.each do |t|
+      body = body.gsub(t.first, link_to(t.last, url_for(controller: :words, action: :show, id: t.last)))
     end
     body
   end
@@ -31,6 +41,6 @@ module WordsHelper
 
   private 
   def word_list(except_word)
-    Word.where.not(title: except_word).pluck(:title)
+    Word.where.not(title: except_word).order("LENGTH(title) DESC").pluck(:title)
   end
 end
