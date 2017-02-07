@@ -25,6 +25,10 @@
     #edit.col.s12.m12
       .from-group.field
         = f.label :body
+        span.small
+          span &nbsp;(
+          = link_to('Markdown', '/Markdown')
+          span が使えます。)
         = f.text_area :body, class: 'form-control'
 
       - if uploadable?
