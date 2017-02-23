@@ -16,7 +16,7 @@ section
       tr
         td = u.id
         td = u.created_at
-        td = u.username
+        td = mail_to u.email, u.username
         td = u.points
         td 
           - if current_user.admin? && (current_user != u)
