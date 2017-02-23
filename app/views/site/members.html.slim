@@ -7,14 +7,16 @@ section
   table.table.table-striped
     tr
       th
-      th E-mail
+      th 登録日
+      th Username
       th Points
       th Role
 
     - @users.each do |u|
       tr
         td = u.id
-        td = u.email
+        td = u.created_at
+        td = u.username
         td = u.points
         td 
           - if current_user.admin? && (current_user != u)
