@@ -7,7 +7,7 @@ class SiteController < ApplicationController
   before_action :authenthicate_admin!, except: [:members, :activities]
 
   def members
-    @users = User.all
+    @users = User.all.order(:id)
   end
 
   def update_user_role
